@@ -13,22 +13,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     $data=[
         "ciao"=>"Ciao a Tutti",
         "header"=>[
-            "headerNames"=>[
-                "Home",
-                "About Us",
-                "Contact"
-            ],
-            "headerlinks"=>[
-                "/",
-                "/about",
-                "/contact"
-            ]
-            
+           [
+            "name" => "Home",
+            "link" => "/"
+           ],
+           [
+            "name" => "About",
+            "link" => "/about"
+           ],
+           [
+            "name" => "Contact",
+            "link" => "/contact"
+           ],
         ]
         ];
     return view('home',$data);
 }) -> name("home");
+
+
+Route::get('/about', function () {
+    return view('about');
+}) -> name("about");
+
+
+Route::get('/contact', function () {
+    return view('contact');
+}) -> name("contact");
+
